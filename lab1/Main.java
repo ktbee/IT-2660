@@ -5,7 +5,7 @@
  */
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     System.out.println("hello, world!");
 
     Lab1 lab = new Lab1();
@@ -27,10 +27,14 @@ public class Main {
     System.out.println("First value in array: " + arr[0]);
     System.out.println("Last value in array: " + arr[arr.length - 1]);
 
+    // Calling methods created in Lab1
+    System.out.println("max(int a, int b): " + lab.max(12, 67));
+    System.out.println("min(int a, int b): " + lab.min(21, 76));
+    System.out.println("sum(int[] nums): " + lab.sum(arr));
+    System.out.println("average(int[] nums): " + lab.average(arr));
+    System.out.println("max(int[] nums): " + lab.max(arr));
+    System.out.println("min(int[] nums): " + lab.min(arr));
   }
-
-    // Call the methods created in Lab1.
-
 }
 
 // Add all of the methods here
@@ -70,7 +74,7 @@ class Lab1 {
     if (nums.length == 0) throw new Exception("Array is empty");
     int min = nums[0];
     for (int i = 1; i < nums.length; i++) {
-      if (nums[i] > min) {
+      if (nums[i] < min) {
         min = nums[i];
       }
     }
