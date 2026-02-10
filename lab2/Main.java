@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Queue;
+import java.util.Stack;
 
 // Lab 2 - Lists, Stacks, and Queues
 // Your Name: Katie Broida
@@ -13,9 +14,9 @@ class Main {
     Lab2 lab = new Lab2();
     // Comment/Uncomment the following 3 method calls as you work on each method.
     // No code should be added to the main method. All of your code will go into the methods in Lab2.
-    // lab.linkedList();
+    lab.linkedList();
     lab.queue();
-    // lab.stack();
+    lab.stack();
   }
 }
 
@@ -67,8 +68,9 @@ class Lab2 {
     System.out.println("New head of queue: " + peekedElement);
 
     // 11. Using for(String element : q), output all of the values in the queue
+    System.out.println("Elements currently in q:");
     for (String element : q) {
-      System.out.println("q element: " + element);
+      System.out.println("- " + element);
     }
 
 
@@ -76,22 +78,46 @@ class Lab2 {
 
   public void stack() {
     // 12. Create a Stack<String> called bookStack
+    Stack<String> bookStack = new Stack<>();
 
     // 13. Push the following book titles onto bookStack: "Clean Code", "Design Patterns", "Pragmatic Programmer"
+    bookStack.push("Clean Code");
+    bookStack.push("Design Patterns");
+    bookStack.push("Pragmatic Programmer");
 
     // 14. pop() 1 book off the stack. Display it's value
+    String bookPop = bookStack.pop();
+    System.out.println("Popped book: " + bookPop);
 
     // 15. Use the peek() method to view the top book on the stack
+    String bookPeek = bookStack.peek();
+    System.out.println("Current stack top book: " + bookPeek);
 
     // 16. push() "Web DB Technologies" onto the stack
+    bookStack.push("Web DB Technologies");
 
     // 17. Use the peek() method to view the top book on the stack
+    bookPeek = bookStack.peek();
+    System.out.println("Updated stack top book: " + bookPeek);
 
     // 18. Search for "Design Patterns" in the stack. Display the results of the search.
+    int bookSearch = bookStack.search("Design Patterns");
+
+    if(bookSearch != -1) {
+      System.out.println("Found 'Design Patterns' at position: " + bookSearch + " in the stack.");
+    } else {
+      System.out.println("'Design Patterns' not found in stack.");
+    }
 
     // 19. Call empty(). Output the results
+    bookStack.empty();
+    System.out.println("The book stack is empty: " + bookStack.empty());
 
     // 20. Print the titles of all of the books on the stack
+    System.out.println("Books currently in stack:");
+    for(String book : bookStack) {
+      System.out.println("- " + book);
+    }
 
   }
 
