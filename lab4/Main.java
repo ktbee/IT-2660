@@ -5,17 +5,30 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+      long startTime;
+      long endTime;
+
       System.out.println("Unsorted Array ---------------------------------------------------");
       ArrayList<Integer> integerList = Lab4.getList();
       Lab4.outputList(integerList);
 
       System.out.println("\n\nBubble sort results ----------------------------------------------");
+      startTime = System.nanoTime();
       ArrayList<Integer> bubbleSortedList = Lab4.bubbleSort(integerList);
+      endTime = System.nanoTime();
+      long bubbleSortTime = endTime - startTime;
       Lab4.outputList(bubbleSortedList);
 
       System.out.println("\n\nInsertion sort results -------------------------------------------");
+      startTime = System.nanoTime();
       ArrayList<Integer> insertionSortedList = Lab4.insertionSort(integerList);
+      endTime = System.nanoTime();
+      long insertionSortTime = endTime - startTime;
       Lab4.outputList(insertionSortedList);
+
+      System.out.println("\n\nTime results -------------------------------------------");
+      System.out.println("Bubble sort time: " + bubbleSortTime + " nanoseconds");
+      System.out.println("Insertion sort time: " + insertionSortTime + " nanoseconds");
     }
 }
 
@@ -48,7 +61,7 @@ class Lab4 {
   public static ArrayList<Integer> getList() {
     ArrayList<Integer> integerList = new ArrayList<>();
     String line;
-    try (BufferedReader br = new BufferedReader(new FileReader("integers.txt"))) {
+    try (BufferedReader br = new BufferedReader(new FileReader("lab4/integers.txt"))) {
         while ((line = br.readLine()) != null) {
             integerList.add(Integer.parseInt(line));
         }
