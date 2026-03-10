@@ -14,7 +14,7 @@ public class Main {
       Lab4.outputList(bubbleSortedList);
 
       System.out.println("\n\nInsertion sort results -------------------------------------------");
-      ArrayList<Integer> insertionSortedList = Lab4.insertionSort(integerList);  
+      ArrayList<Integer> insertionSortedList = Lab4.insertionSort(integerList);
       Lab4.outputList(insertionSortedList);
     }
 }
@@ -22,6 +22,19 @@ public class Main {
 class Lab4 {
   public static ArrayList<Integer> insertionSort(ArrayList<Integer> integerList) {
     // Step 1 - Implement insertion sort algorithm here
+    for (int i = 1; i < integerList.size(); i++) {
+        int currentVal = integerList.get(i);
+        int leftIndex = i - 1;
+
+        // Shift values right if less than currentVal
+        while (leftIndex >= 0 && integerList.get(leftIndex) > currentVal) {
+          integerList.set(leftIndex + 1, integerList.get(leftIndex));
+          leftIndex--;
+        }
+
+        // No values left that are less than currentVal, found its correct position for insert
+        integerList.set(leftIndex + 1, currentVal);
+    }
 
     return integerList;
   }
