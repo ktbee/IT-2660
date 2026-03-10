@@ -54,6 +54,22 @@ class Lab4 {
 
   public static ArrayList<Integer> bubbleSort(ArrayList<Integer> integerList) {
     // Step 2 - Implement the bubble sort algorithm here
+    boolean didSwap = true;
+
+    // Sort until no swaps are needed in an iteration
+    while (didSwap) {
+      didSwap = false;
+      for (int i = 0; i < integerList.size() - 1; i++) {
+        // Check if number on the left is larger than the number on the right
+        // If so, swap them
+        if (integerList.get(i) > integerList.get(i + 1)) {
+          int temp = integerList.get(i);
+          integerList.set(i, integerList.get(i + 1));
+          integerList.set(i + 1, temp);
+          didSwap = true;
+        }
+      }
+    }
 
     return integerList;
   }
